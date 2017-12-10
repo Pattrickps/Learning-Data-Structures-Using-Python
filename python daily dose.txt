@@ -1,0 +1,448 @@
+
+list=[1,2,3,4]
+
+def sum(list):
+    sum=0
+    for i in list:
+        sum +=i
+    print sum
+	
+#-------------------------------------------------------------------------------
+x=1
+def f():
+
+    global x
+    x+=1
+    print x
+
+x=5   #Note: if we are not passing the global variable as parameter to the function , then we must access that variable by using the keyword global(remember that the global variable also changes after a call to the function),else if we are giving it as paramiter then no need to use global
+f()
+
+#-------------------------------------------------------------------------------
+
+def f(x):
+    y=1
+    x+=1
+    print "x=",x
+    return x
+
+x=3
+y=2
+z=f(x)
+print"z=",z
+print "x=",x
+print"y=",y
+
+#-------------------------------------------------------------------------------
+#run this to find the difference b/w the above two programes
+def f(x):
+    y=1
+    global x
+    x+=1
+    print "x=",x
+    return x
+
+x=3
+y=2
+z=f(x)
+#-------------------------------------------------------------------------------
+
+string1='hello'
+print id(string1)
+
+string2= string1[:]
+print id(string2)
+
+print string1 is string2
+print string1==string2
+
+#-------------------------------------------------------------------------------
+
+def factorial(n):
+
+   if n<=1:
+    return 1
+   else:
+    return n*factorial(n-1)
+#-------------------------------------------------------------------------------
+list=[0,1]
+
+def fibonacci(number):
+    i=2
+    while i<=number:
+        list.append(list[i-1]+ list[i-2])
+        i=i + 1
+    print list
+
+#-------------------------------------------------------------------------------
+# Two separate lists
+cars = ["Aston", "Audi", "McLaren"]
+accessories = ["GPS kit", "Car repair-tool kit"]
+prices = {1:"570000$", 2:"68000$", 3:"450000$",
+          4:"890000$", 5:"4500$"}
+
+# Printing prices of cars
+for index, c in enumerate(cars):
+    print "Car: %s Price: %s"%(c, prices[index+1])
+
+# Printing prices of accessories
+for index, a in enumerate(accessories,start=1):
+    print ("Accessory: %s Price: %s"\
+           %(a,prices[index+len(cars)]))
+#-------------------------------------------------------------------------------
+l1= zip(*[('pen','apple','pencil'),('eye','me','hum')])
+print l1
+#-------------------------------------------------------------------------------
+l1= zip(['pen','apple','pencil'],['eye','me','hum'])
+print l1[0][0]
+print type(l1)
+print l1   #>>>[('pen', 'eye'), ('apple', 'me'), ('pencil', 'hum')]
+
+#-------------------------------------------------------------------------------
+import copy
+a_list=[1,2,3,4]
+s_list=a_list[:]
+print id(a_list)
+print id(s_list)
+
+d_list=copy.deepcopy(a_list)
+print id(d_list)
+
+print id(a_list[1])
+print id(d_list[1])
+#-------------------------------------------------------------------------------
+i=12345
+k= [p for p in str(i)]
+print k
+>>> ['1', '2', '3', '4', '5']
+
+k= [int(p) for p in str(i)]
+print k
+
+#shortcut: print list('12345')
+
+#-------------------------------------------------------------------------------
+def cube(x):
+    return x**2
+print map(lambda x: x**2,range(10))
+
+special_cubes = filter(lambda x: x > 9 and x < 60, cubes)
+
+#-------------------------------------------------------------------------------
+
+def is_member (value, list):
+    for element in list:
+        if element == value:
+            return True
+    return False
+
+print(is_member("a",[1,2,"a","b"]))
+
+#-------------------------------------------------------------------------------
+
+str= raw_input("enter your string")
+print len(str)
+print str[::-1]
+
+def palindrome(str):
+    if (str== str[::-1]):
+        print("yes its palindrome")
+
+palindrome(str)
+
+#-------------------------------------------------------------------------------
+
+print ord('A')
+
+print chr(65)
+#-------------------------------------------------------------------------------
+What is called when a function is defined inside a class?        ANS) Method
+#-------------------------------------------------------------------------------
+What is the output of the following code :
+print tuple[1:3] if tuple = ( 'abcd', 786 , 2.23, 'john', 70.2 )
+
+#-------------------------------------------------------------------------------
+t=[6,3,7,1]
+t.sort()  #don't write t=t.sort() bcoz the value of t will become "none", because t.sort() does't return anything
+print t
+
+t=sorted[t] # here t contains the sorted list,sorted[t] returns the sorted list
+
+#-------------------------------------------------------------------------------
+constructors are special meathods of a class which gets automatically called when we create an object of that class.
+
+class a:
+	def swine(self): #note that this is not a constructor
+		print"this is not a constructor"
+
+obj=a()
+obj.swine()
+//the output is "this is not a constructor"
+
+class b:
+	def __init__(swine):#this is a constructor
+		print"This is a constructor"
+
+newobj=b()
+//the output is "This is a constructor"
+#-------------------------------------------------------------------------------
+IMPORT MODULES
+
+Modules contains functions. we create modulules so that we can use those modules later in some other programmes.
+save the module by going to c:\python27
+To call the module, ---->
+import module nname
+module_name.function_name()
+//output of the function called
+#-------------------------------------------------------------------------------
+Trick to use a perticular module function several times--->baby=module_name.func_name
+														   baby()
+
+now u have to simply write baby to use that function
+Q) when to use reload(module_name)
+#-------------------------------------------------------------------------------
+import math
+>>dir(math)
+output?
+>>help(math)
+output?
+
+def func(name="pratik",text="is",age="20"):
+     print " ".join((name,text,age))  #Note:join should contain exactly one arguement
+    
+func()
+#-------------------------------------------------------------------------------
+def func(name="pratik",text="is",age="20"):
+    print(name,text,age) #this will print a sequence
+ func()
+
+ #-------------------------------------------------------------------------------
+ Q) How can we make the arguement of a function flexible?
+
+ def func(*args):
+    sum=0
+    print args
+    for i in args:
+        sum+=i
+
+    print sum
+
+func(3,4)
+func(3,4,1)   #Note:here we are packing the arguements
+#-------------------------------------------------------------------------------
+def fun(a,b,c,d):
+    print 100*a + 2*b + c + d
+
+fun(*[1,2,3,4])
+
+li=[1,2,3,4]
+fun(*li)   #Note:here we are unpacking the arguements
+#-------------------------------------------------------------------------------
+grocery={'apple','bannana','beer','biscuit','beer','apple'}
+
+print (grocery)
+print list(grocery)
+print tuple(grocery)
+print type(grocery)  # Note: Sets can be type casted into list and tuples but not dictionary. Also a Set object has no attribute append. istead of append ,we can use set_name.add(value)
+e.g ---> grocery.add('mango')
+
+if 'mango' in grocery:
+    print "yes mango is present"
+
+ #-------------------------------------------------------------------------------
+dic={'pratik':' is good', 'mohit': ' is bad', 'nish': ' is sweet'}
+print dic.items()
+print dic
+
+for k,v in dic.items():
+    print k+v     #istead of this, what if we printed (print k+v ,)
+    
+
+#-------------------------------------------------------------------------------
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+dictionary = dict(zip(keys, values))
+print dictionary
+
+print zip(keys, values)   # output>> [('a', 1), ('b', 2), ('c', 3)],so basically in the 3rd step we are converting list into dictionary
+																	by using dict
+
+#-------------------------------------------------------------------------------
+class enemy:
+    life=3
+
+    def attack(self):
+        print"Ouch!!"
+        self.life-=1
+
+    def lifecheck(self):
+        if self.life<=0:
+            print'You are dead'
+        else:
+            print"Your life is "+str(self.life)
+
+
+obj1=enemy()
+obj2= enemy()
+
+obj1.attack()
+obj1.attack()
+obj1.lifecheck()
+obj2.lifecheck()
+
+>>>>>output>>Ouch!!
+			Ouch!!
+			Your life is 1
+			Your life is 3
+
+#-------------------------------------------------------------------------------
+class a:
+    def createname(self,name):
+        self.naam=name    #here we are creating an instance variable'naam' associated with the object
+    def displayname(self):
+        print self.naam
+
+obj1=a()
+obj1.createname("pratik")
+obj1.displayname()
+#-------------------------------------------------------------------------------
+class a:
+    def createname(obj,name):
+        obj.naam=name
+    def displayname(obj):
+        print obj.naam
+
+obj1=a()
+obj1.createname('pratik')
+obj1.displayname()
+#-------------------------------------------------------------------------------
+class parentclass:
+    var1="i am var1"
+    var2="i am var2"
+
+
+class childclass(parentclass): #this will inherit all the characteristics of the parent class
+    pass
+
+objparentclass=parentclass()
+print objparentclass.var1
+
+objchildclass=childclass()
+print childclass.var1
+Q)how to inherit multiple parent class from a subclass
+#-------------------------------------------------------------------------------
+# Python code to demonstrate the working of
+# choice() and randrange()
+  
+# importing "random" for random operations
+import random
+ 
+# using choice() to generate a random number from a 
+# given list of numbers.
+print ("A random number from list is : ",end="")
+print (random.choice([1, 4, 8, 10, 3]))
+ 
+# using randrange() to generate in range from 20
+# to 50. The last parameter 3 is step size to skip
+# three numbers when selecting.
+print ("A random number from range is : ",end="")
+print (random.randrange(20, 50, 3))
+#-------------------------------------------------------------------------------
+#creating files in python
+fw= open('sample.txt',w)
+fw.write('this is the irst text\n')
+fw.write('this is the second line')
+fw.close
+
+fr.open('sample.txt',r)
+text=fr.read()
+print text
+fr.close()
+#-------------------------------------------------------------------------------
+dic = {"A":1, "B":2}
+print(dic.get("A"))
+print(dic.get("C"))
+print(dic.get("C","Not Found ! "))
+#-------------------------------------------------------------------------------
+
+l=[]
+l.append([1]+[2,4]+[3,2])
+print l
+
+print([1]+[2,4]+[3,2])
+
+xrange is a generator, it will only generate values when it is used in a loop
+can u iterate over a dictionary
+
+x=lambda:1
+print x()
+
+sum= lambda x,y: x+y
+print sum(3,5)
+
+what is the use of with keyword in python
+
+#----------------------------------------------------------------
+dic1 = { 'Name' : 'Nandini', 'Age' : 19 }
+ 
+dic2 = { 'ID' : 2541997 }
+dic1.update(dic2)
+print ("The updated dictionary is : ")
+print (str(dic1))
+#---------------------------------------------------------------------
+dict = { 'Name' : 'Nandini', 'Age' : 19 }
+ 
+# using has_key() to check if dic1 has a key
+if dict.has_key('Name'):
+       print ("Name is a key")
+else : print ("Name is not a key")
+#------------------------------------------------------------------------
+# using get() to print a key value
+
+dict = { 'Name' : 'Nandini', 'Age' : 19 }
+
+print ("The value associated with ID is : ")
+print (dict.get('ID', "Not Present"))
+print (len(dic))
+#-------------------------------------------------------------------
+
+Sample Input
+
+6
+1 2 3 4 10 11
+Sample Output
+
+31
+
+
+n = int(raw_input().strip())
+arr = map(int,raw_input().strip().split(' '))
+sum=0
+for i in arr:
+    sum+=i
+
+print sum
+#-----------------------------------------------------------------------
+a0,a1,a2 = raw_input().strip().split(' ')
+a0,a1,a2 = [int(a0),int(a1),int(a2)]
+---------------------------------------------------------------------------
+     #
+    ##
+   ###
+  ####
+ #####
+######
+
+import sys
+n = int(raw_input().strip())
+for i in range(n)[::-1]:
+    for j in range(i):
+        sys.stdout.write(' ')
+        sys.stdout.flush()
+    for k in range(n-i):
+        sys.stdout.write('#')
+        sys.stdout.flush()
+    print ""
+
+ #------------------
+ your tutorials are located in P://CBpy folder
